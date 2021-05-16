@@ -1,6 +1,8 @@
 import React from "react"
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { removeNote } from '../redux/actions/actions'
+import { useSelector, shallowEqual } from "react-redux";
+import Note from "./Note";
+import NoteCounter from './NoteCounter'
+import EditNote from './EditNote'
 
 /**
  * The useSelector hook uses === (a.k.a. strict reference equality check) to check whether the previously fetched value from the store 
@@ -12,27 +14,21 @@ import { removeNote } from '../redux/actions/actions'
  */
 const NoteList = () => {
     const notes = useSelector(store => store.notes, shallowEqual);
-    const dispatch = useDispatch();
-    const handleClick = (id) => {
-        dispatch(removeNote(id));
-    }
-
-    const notesItems = notes.map((note, index) => (
-        <li key={index}>
-            <b>{note.title}</b>
-            <button onClick={() => handleClick(note.id)}>x</button>
-            <br />
-            <span>{note.content}</span>
-        </li>
+    const notesItems = notes.map((note) => (
+        <div key={note.id}>
+            {note.editing ? <EditNote note={note} /> :
+                <Note note={note} />}
+        </div>
     ));
 
     return (
-        <React.Fragment>
-            <h3>all notes</h3>
-            <div>
+        <div className="note-container">
+            <h3 className="text-center">All Notes</h3>
+            { notes && notes.length > 0 && <NoteCounter />}
+            <div className="note-container">
                 {notes && notesItems}
             </div>
-        </React.Fragment>)
+        </div>)
 }
 
 export default NoteList

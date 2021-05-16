@@ -1,34 +1,33 @@
-import { ADD_NOTE, REMOVE_NOTE, LOAD_NOTES } from '../actions/actions';
+import { ADD_NOTE, DELETE_NOTE, LOAD_NOTES, EDIT_NOTE, UPDATE_NOTE } from '../actions/actions';
 
 const initialState = {
-    notes: [],
-    signUpModal: {
-        open: false
-    }
+    notes: [], // just array is better, no need for 'notes' if there are no extra fields.
 }
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NOTE:
-            return {
-                ...state, notes: [...state.notes, action.payload]
-            };
-        //return Object.assign({}, state, { posts: state.posts.concat(action.payload) })
+            return { notes: [action.payload, ...state.notes] }
+            //return Object.assign({}, state, { posts: state.posts.concat(action.payload) })
 
         case LOAD_NOTES:
             return {
                 //...state, posts: [...state.posts, ...action.payload]
-                ...state, notes: [...state.notes, ...action.payload.map(p => ({ id: p.id, title: p.title, content: p.body }))]
+                notes: [...state.notes, ...action.payload.map(p => ({ id: p.id, title: p.title, content: p.body, editong: false }))]
                 //posts: state.posts.concat(action.payload)
             };
-        case REMOVE_NOTE:
+        case DELETE_NOTE:
+            return { notes: [...state.notes.filter(p => p.id !== action.payload)] };
+        case EDIT_NOTE:
+            return { notes: state.notes.map(note => note.id === action.payload ? { ...note, editing: true } : note) };
+        case UPDATE_NOTE:
+            console.log('updating', action.payload)
             return {
-                ...state, notes: [...state.notes.filter(p => p.id !== action.payload)]
+                notes: [{ ...action.payload, editing: false }, ...state.notes.filter(note => note.id !== action.payload.id),]
             }
         default:
             return state;
     }
 }
-
 
 export default rootReducer;

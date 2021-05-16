@@ -9,7 +9,9 @@ import { connect } from 'react-redux'
  **/
 function App() {
   return (
-    <NotesApp />
+    <div className="App">
+      <NotesApp />
+    </div>
   );
 }
 

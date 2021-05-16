@@ -19,11 +19,15 @@ const NotesApp = () => {
     }, [])
 
     return (
-        < div className="App" >
-            <h1>React Redux Notes App</h1>
-            <NewNote dispatch={dispatch} />
-            <hr />
-            <NoteList />
+        < div className="container fluid" >
+            <div className="row">
+                <div className="col">
+                    <NewNote dispatch={dispatch} />
+                </div>
+                <div className="col">
+                    <NoteList />
+                </div>
+            </div>
         </div>
     )
 }

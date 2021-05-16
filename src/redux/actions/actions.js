@@ -1,16 +1,27 @@
 export const ADD_NOTE = 'ADD_NOTE';
-export const REMOVE_NOTE = 'REMOVE_NOTE';
+export const DELETE_NOTE = 'DELETE_NOTE';
 export const LOAD_NOTES = 'LOAD_NOTES';
+export const EDIT_NOTE = 'EDIT_NOTE';
+export const UPDATE_NOTE = 'UPDATE_NOTE';
+
 const uuidv4 = require("uuid/v4")
 
 export function addNote(title, content) {
-    return { type: ADD_NOTE, payload: { title: title, content: content, id: uuidv4() } };
+    return { type: ADD_NOTE, payload: { title: title, content: content, id: uuidv4() }, editing: false };
 }
 
-export function removeNote(id) {
-    return { type: REMOVE_NOTE, payload: id };
+export function deleteNote(id) {
+    return { type: DELETE_NOTE, payload: id };
 }
 
 export function loadNotes(contents) {
     return { type: LOAD_NOTES, payload: contents }
+}
+
+export function editNote(id) {
+    return { type: EDIT_NOTE, payload: id };
+}
+
+export function updateNote(id, data) {
+    return { type: UPDATE_NOTE, payload: { ...data, id: id } };
 }
