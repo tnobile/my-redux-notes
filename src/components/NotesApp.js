@@ -19,7 +19,7 @@ const NotesApp = () => {
     }, [dispatch])
 
     return (
-        < div className="container fluid" >
+        <div className="container fluid " >
             <div className="row">
                 <div className="col">
                     <NewNote dispatch={dispatch} />
