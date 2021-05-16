@@ -9,3 +9,18 @@ In summary, to connect Redux to React, you must do the following:
 7. Render your state
 
 <https://chriscourses.com/blog/redux>
+
+# hooks
+
+* useSelctor
+* useDispatcher
+* useStore
+* useEffect
+* useState
+
+
+# redux
+
+1. Actions & Action Creators ( action + payload )
+2. Reducers (switch on actions)
+3. Store  (createStore)
