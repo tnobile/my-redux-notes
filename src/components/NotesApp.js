@@ -16,7 +16,7 @@ const NotesApp = () => {
                     payload: json.slice(0, 5)
                 })
             })
-    }, [])
+    }, [dispatch])
 
     return (
         < div className="container fluid" >

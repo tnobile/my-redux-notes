@@ -34,7 +34,7 @@ a:hover {
 }
 
 .note {
-  background: lightgreen;
+  background: rgb(187, 230, 187);
   width: 98%;
   margin: 0 auto;
   padding: 2px;
