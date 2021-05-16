@@ -13,7 +13,7 @@ const NotesApp = () => {
                 console.log("p", json)
                 dispatch({
                     type: 'LOAD_NOTES',
-                    payload: json.slice(0, 5)
+                    payload: json.slice(0, 15)
                 })
             })
     }, [dispatch])
