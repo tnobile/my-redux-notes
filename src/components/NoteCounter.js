@@ -1,10 +1,10 @@
 import { useSelector, shallowEqual } from "react-redux";
 
 const NoteCounter = () => {
-    const state = useSelector(store=>store.notes, shallowEqual);
+    const notes = useSelector(store => store.notes, shallowEqual);
     return (
-        <div>{console.log('state', state)}
-            <p className="text-center">Number of Notes: {state.length}</p>
+        <div>{console.log('notes', notes)}
+            <p className="text-center">Number of Notes: {notes.length}</p>
         </div>
     );
 }

@@ -16,8 +16,8 @@ const NoteList = () => {
     const notes = useSelector(store => store.notes, shallowEqual);
     const notesItems = notes.map((note) => (
         <div key={note.id}>
-            {note.editing ? <EditNote note={note} /> :
-                <Note note={note} />}
+            {note.editing ?
+                <EditNote note={note} /> : <Note note={note} />}
         </div>
     ));
 
