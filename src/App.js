@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import NotesApp from './components/NotesApp';
+import { connect } from 'react-redux'
 
+/** 
+ * https://chriscourses.com/blog/redux
+ * Redux is simply a library that ensures we follow a certain pattern to update our global state. 
+ * https://github.com/hstevanoski/react-redux-notes-app/tree/hooks/src
+ **/
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NotesApp />
   );
 }
 
-export default App;
+// useSelector hook instead
+const mapStateToProps = state => {
+  return { notes: state.notes }
+}
+
+// useDispatch hook instead.
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  }
+}
+
+// connect is HOC higher order components
+// just like decorator?
+// https://reactjs.org/docs/higher-order-components.html
+export default connect(mapStateToProps, mapDispatchToProps)(App)
