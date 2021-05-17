@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addNote } from '../redux/actions/actions'
+//import { addNote } from '../redux/actions/actions'
+import { addNote } from '../redux/features/notes/notesSlice'
+import { nanoid } from 'nanoid'
 
-const NotesForm = () => {
+const AddNote = () => {
     const [value, setValue] = useState('');
     const [content, setContent] = useState('');
+
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addNote(value, content));
+        //dispatch(addNote(value, content));
+        dispatch(addNote({ title: value, content: content, id: nanoid(), editing: false }));
+
         setContent('');
         setValue('');
     }
@@ -33,4 +38,4 @@ const NotesForm = () => {
     );
 }
 
-export default NotesForm
+export default AddNote;

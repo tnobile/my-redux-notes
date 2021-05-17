@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.css';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
-import store from './redux/store/store'
-import 'bootstrap/dist/css/bootstrap.css';
+
+// traditional
+//import store from './redux/store/store'
+// redux-toolkit
+import store from './redux/store/index'
+
+
 
 // cmd + option + j
 // store.getState() 

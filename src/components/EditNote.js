@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateNote } from '../redux/actions/actions';
+//import { updateNote } from '../redux/actions/actions';
+import { updateNote } from '../redux/features/notes/notesSlice';
 
 const EditNote = ({ note }) => {
     const [title, setTitle] = useState(note.title);
@@ -14,7 +15,8 @@ const EditNote = ({ note }) => {
             content
         };
         console.log(`dispatch update with ${note.id}`, data);
-        dispatch(updateNote(note.id, data));
+        //dispatch(updateNote(note.id, data));
+        dispatch(updateNote({ ...data, id: note.id }));
     };
 
     return (

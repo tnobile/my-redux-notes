@@ -24,3 +24,22 @@ In summary, to connect Redux to React, you must do the following:
 1. Actions & Action Creators ( action + payload )
 2. Reducers (switch on actions)
 3. Store  (createStore)
+
+
+# createSlice
+
+the files structure: we can put all of our Redux-related logic for the slice into a single file.
+
+consists of : 
+* name: a parameter that will be the prefix for all of your action types
+* initialState: the initial values for our reducer
+* reducers: it's an object where the keys will become action type strings, and the functions are reducers that will be run when that action type is dispatched.
+
+
+# ducks
+Redux.org recommend that most applications should structure files using a "feature folder" approach (all files for a feature in the same folder) or the "ducks" pattern (all Redux logic for a feature in a single file), rather than splitting logic across separate folders by "type" of code (reducers, actions, etc).
+
+# action creators
+
+console.log(createPost({ id: 123, title: 'Hello World' }))
+// {type : "posts/createPost", payload : {id : 123, title : "Hello World"}}

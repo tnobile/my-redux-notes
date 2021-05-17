@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { editNote, deleteNote } from '../redux/actions/actions'
+//import { editNote, deleteNote } from '../redux/actions/actions'
+import { editNote, deleteNote } from '../redux/features/notes/notesSlice';
 
 const Note = ({ note, dispatch }) => {
     return (

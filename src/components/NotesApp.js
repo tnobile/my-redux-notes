@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react'
 import NoteList from './NoteList';
-import NewNote from './NotesForm';
+import NewNote from './AddNote';
 import { useDispatch } from 'react-redux'
+//import { LOAD_NOTES } from '../redux/actions/actions'
+import { loadNotes } from '../redux/features/notes/notesSlice'
 
 const NotesApp = () => {
-
     const dispatch = useDispatch();
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then(response => response.json())
             .then(json => {
                 console.log("p", json)
-                dispatch({
-                    type: 'LOAD_NOTES',
-                    payload: json.slice(0, 15)
-                })
+                // dispatch({
+                //     type: LOAD_NOTES,
+                //     payload: json.slice(0, 5)
+                // })
+                dispatch(loadNotes(json.slice(0, 5)));
             })
     }, [dispatch])
 
