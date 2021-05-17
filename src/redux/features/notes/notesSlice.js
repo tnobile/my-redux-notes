@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+const uuidv4 = require("uuid/v4")
 /**
  * https://www.softkraft.co/how-to-setup-redux-with-redux-toolkit/
  * https://redux-toolkit.js.org/api/createSlice
@@ -7,6 +7,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const notesSlice = createSlice({
     // A name, used in action types
     name: "notes",
+    // better with initialState: []
     initialState: {
         notes: []
     },
@@ -17,7 +18,7 @@ const notesSlice = createSlice({
         // The issue is the use of an arrow function with no curly braces as the reducer, because that acts as an implicit return statement. 
         //So, you're both mutating state.token, and returning the result of the assignment.
         addNote: (state, action) => { state.notes = [action.payload, ...state.notes] },
-        loadNotes: (state, action) => { state.notes = [...state.notes, ...action.payload.map(p => ({ id: p.id, title: p.title, content: p.body, editong: false }))] },
+        loadNotes: (state, action) => { state.notes = [...state.notes, ...action.payload.map(p => ({ id: uuidv4(), title: p.title, content: p.body, editong: false }))] },
         deleteNote: (state, action) => { state.notes = [...state.notes.filter(p => p.id !== action.payload)] },
         editNote: (state, action) => { state.notes = state.notes.map(note => note.id === action.payload ? { ...note, editing: true } : note) },
         updateNote: (state, action) => { state.notes = [{ ...action.payload, editing: false }, ...state.notes.filter(note => note.id !== action.payload.id),] },
