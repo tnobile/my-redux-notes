@@ -6,6 +6,7 @@ import {
   HashRouter as Router,
   Switch,
   Route,
+  NavLink,
   Link
 } from "react-router-dom";
 
@@ -52,7 +53,7 @@ const NavBar = () => {
         <Link to="/todo">Todo</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <NavLink className="about" to="/about">About</NavLink>
       </li>
     </ul>)
 }
