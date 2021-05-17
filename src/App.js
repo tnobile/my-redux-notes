@@ -9,6 +9,9 @@ import {
   Link
 } from "react-router-dom";
 
+/* eslint-disable import/no-webpack-loader-syntax */
+import HowTo from '!babel-loader!@mdx-js/loader!./HowTo.mdx'
+
 /** 
  * https://chriscourses.com/blog/redux
  * Redux is simply a library that ensures we follow a certain pattern to update our global state. 
@@ -18,17 +21,7 @@ function App() {
   return (
     <Router>
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/todo">Todo</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
+        <NavBar />
         <Switch>
           <Route exact path="/">
             <NotesApp />
@@ -37,7 +30,7 @@ function App() {
             <Todo />
           </Route>
           <Route path="/about">
-            <About />
+            <HowTo />
           </Route>
         </Switch>
       </div>
@@ -45,12 +38,25 @@ function App() {
   );
 }
 
-const About = () => {
-  return <div>About</div>
-}
 const Todo = () => {
   return <div>Todo</div>
 }
+
+const NavBar = () => {
+  return (
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/todo">Todo</Link>
+      </li>
+      <li>
+        <Link to="/about">About</Link>
+      </li>
+    </ul>)
+}
+
 // useSelector hook instead
 const mapStateToProps = state => {
   return { notes: state.notes }
