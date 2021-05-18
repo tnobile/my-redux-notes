@@ -42,6 +42,7 @@ Redux is simply a library that ensures we follow a certain pattern to update our
 
 - <https://chriscourses.com/blog/redux>
 - <https://github.com/hstevanoski/react-redux-notes-app/tree/hooks/src>
+- <https://github.com/devAbhimanyu/Redux-toolkit/tree/createSlice>
 - <https://www.softkraft.co/how-to-setup-redux-with-redux-toolkit/>
 - <https://redux-toolkit.js.org/api/createSlice>
 
@@ -83,3 +84,17 @@ Redux.org recommend that most applications should structure files using a "featu
 
 console.log(createPost({ id: 123, title: 'Hello World' }))
 // {type : "posts/createPost", payload : {id : 123, title : "Hello World"}}
+
+
+# dispatch (Higher Order Function/Component)
+
+If you don't specify the second argument to connect(), your component will receive dispatch by default. For example:
+```
+ connect()(MyComponent)
+ // which is equivalent with
+ connect(null, null)(MyComponent)
+
+ // or
+ connect(mapStateToProps /** no second argument */)(MyComponent)
+```
+if you provide mapDispatchToProps in the 2nd paramter, Therefore, instead of calling props.dispatch(() => increment()), you may call props.increment() directly. 

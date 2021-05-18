@@ -1,6 +1,6 @@
 import './App.css';
 import NotesApp from './components/NotesApp';
-import { connect } from 'react-redux'
+import TodoApp from './components/Todos/TodoApp';
 
 import {
   HashRouter as Router,
@@ -23,7 +23,7 @@ function App() {
             <NotesApp />
           </Route>
           <Route path="/todo">
-            <Todo />
+            <TodoApp />
           </Route>
           <Route path="/about">
             <HowTo />
@@ -32,10 +32,6 @@ function App() {
       </div>
     </Router >
   );
-}
-
-const Todo = () => {
-  return <div>Todo</div>
 }
 
 const NavBar = () => {
@@ -53,19 +49,20 @@ const NavBar = () => {
     </ul>)
 }
 
-// useSelector hook instead
-const mapStateToProps = state => {
-  return { notes: state.notes }
-}
+// useSelector hook instead.
+//const mapStateToProps = state => {
+//  return { notes: state.notes }
+//}
 
 // useDispatch hook instead.
-const mapDispatchToProps = dispatch => {
-  return {
-    dispatch
-  }
-}
+//const mapDispatchToProps = dispatch => {
+//  return {
+//    dispatch
+//  }
+//}
 
 // connect is HOC higher order components
 // just like decorator?
 // https://reactjs.org/docs/higher-order-components.html
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+//export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
