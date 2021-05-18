@@ -10,7 +10,8 @@ const { actions, reducer } = createSlice({
         task: "Add the delete functionality",
         completed: false
       }
-    ]
+    ],
+    deleted: []
   },
   reducers: {
     addItem: (state, action) => {
@@ -22,6 +23,7 @@ const { actions, reducer } = createSlice({
       state.list.push(newItem);
     },
     deleteDone: (state, action) => {
+      state.deleted = [...state.deleted,...state.list.filter(item => item.completed)]
       const updateList = state.list.filter(item => !item.completed);
       state.list = updateList;
     },
