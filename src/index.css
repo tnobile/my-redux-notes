@@ -68,7 +68,6 @@ a:hover {
 }
 
 .navBar li {
-  float: left;
   border-right: 1px solid #bbb;
 }
 
@@ -92,6 +91,10 @@ a:hover {
   background-color: #4CAF50;
 }
 
-.about {
+.navBar li .left {
+  float: left;
+}
+
+.navBar li .right {
   float: right;
 }

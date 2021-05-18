@@ -13,11 +13,6 @@ import {
 /* eslint-disable import/no-webpack-loader-syntax */
 import HowTo from '!babel-loader!@mdx-js/loader!./HowTo.mdx'
 
-/** 
- * https://chriscourses.com/blog/redux
- * Redux is simply a library that ensures we follow a certain pattern to update our global state. 
- * https://github.com/hstevanoski/react-redux-notes-app/tree/hooks/src
- **/
 function App() {
   return (
     <Router>
@@ -47,13 +42,13 @@ const NavBar = () => {
   return (
     <ul className="navBar">
       <li>
-        <Link to="/">Home</Link>
+        <Link className="left" to="/">Home</Link>
       </li>
       <li>
-        <Link to="/todo">Todo</Link>
+        <Link className="left" to="/todo">Todo</Link>
       </li>
       <li>
-        <NavLink className="about" to="/about">About</NavLink>
+        <NavLink className="right" to="/about">About</NavLink>
       </li>
     </ul>)
 }

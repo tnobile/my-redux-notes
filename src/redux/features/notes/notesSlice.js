@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 const uuidv4 = require("uuid/v4")
-/**
- * https://www.softkraft.co/how-to-setup-redux-with-redux-toolkit/
- * https://redux-toolkit.js.org/api/createSlice
- */
 const notesSlice = createSlice({
     // A name, used in action types
     name: "notes",
