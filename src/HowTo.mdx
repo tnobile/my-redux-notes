@@ -1,15 +1,28 @@
-export const Box = () => (
-  <div style={{padding: 20, backgroundColor: 'tomato'}} />
-)
+export const Box = ({ color, msg }) => (
+  <div
+    style={{
+      padding: 20,
+      backgroundColor: color,
+      width: "50%",
+      display: "inline-block",
+      textAlign: "center",
+      fontSize: "150px",
+    }}
+  >
+    {msg}
+  </div>
+);
 
 # ¡Hóla, MDX!
 
 This is **markdown** with <span style={{color: "red"}}>JSX</span>: MDX!
 
-<Box />
+<div>
+  <Box color="tomato" msg="左" />
+  <Box color="orange" msg="右" />
+</div>
 
-
-<hr/>
+<hr />
 
 # React-Redux
 
@@ -23,50 +36,47 @@ In summary, to connect Redux to React, you must do the following:
 6. Pass through your state as an argument to your render function
 7. Render your state
 
-Redux is simply a library that ensures we follow a certain pattern to update our global state. 
-
+Redux is simply a library that ensures we follow a certain pattern to update our global state.
 
 # References
-* <https://chriscourses.com/blog/redux>
-* <https://github.com/hstevanoski/react-redux-notes-app/tree/hooks/src>
-* <https://www.softkraft.co/how-to-setup-redux-with-redux-toolkit/>
-* <https://redux-toolkit.js.org/api/createSlice>
 
+- <https://chriscourses.com/blog/redux>
+- <https://github.com/hstevanoski/react-redux-notes-app/tree/hooks/src>
+- <https://www.softkraft.co/how-to-setup-redux-with-redux-toolkit/>
+- <https://redux-toolkit.js.org/api/createSlice>
 
 # Todo
 
-* todo
-* async hook
-* backend
-* fix mdx
+- todo
+- async hook
+- backend
+- fix mdx
 
 # hooks
 
-* useSelctor
-* useDispatcher
-* useStore
-* useEffect
-* useState
-
+- useSelctor
+- useDispatcher
+- useStore
+- useEffect
+- useState
 
 # redux
 
 1. Actions & Action Creators ( action + payload )
 2. Reducers (switch on actions)
-3. Store  (createStore)
-
+3. Store (createStore)
 
 # createSlice
 
 the files structure: we can put all of our Redux-related logic for the slice into a single file.
-consists of : 
+consists of :
 
-* name: a parameter that will be the prefix for all of your action types
-* initialState: the initial values for our reducer
-* reducers: it's an object where the keys will become action type strings, and the functions are reducers that will be run when that action type is dispatched.
-
+- name: a parameter that will be the prefix for all of your action types
+- initialState: the initial values for our reducer
+- reducers: it's an object where the keys will become action type strings, and the functions are reducers that will be run when that action type is dispatched.
 
 # ducks
+
 Redux.org recommend that most applications should structure files using a "feature folder" approach (all files for a feature in the same folder) or the "ducks" pattern (all Redux logic for a feature in a single file), rather than splitting logic across separate folders by "type" of code (reducers, actions, etc).
 
 # action creators
