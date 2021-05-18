@@ -7,7 +7,17 @@ const { actions, reducer } = createSlice({
     list: [
       {
         itemId: nanoid(),
-        task: "Add the delete functionality",
+        task: "align buttons",
+        completed: false
+      },
+      {
+        itemId: nanoid(),
+        task: "done tab",
+        completed: false
+      },
+      {
+        itemId: nanoid(),
+        task: "async fetch thunk",
         completed: false
       }
     ],
