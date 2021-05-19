@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware, applyMiddleware } from '@reduxjs/toolkit'
+import { configureStore, getDefaultMiddleware}  from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
 import notesSlice from "../features/notes/notesSlice"
 import todosSlice from "../features/todos/todosSlice"
