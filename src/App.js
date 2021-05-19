@@ -1,5 +1,5 @@
 import './App.css';
-import NotesApp from './components/NotesApp';
+import NotesApp from './components/Notes/NotesApp';
 import TodoApp from './components/Todos/TodoApp';
 
 import {

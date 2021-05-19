@@ -98,3 +98,43 @@ If you don't specify the second argument to connect(), your component will recei
  connect(mapStateToProps /** no second argument */)(MyComponent)
 ```
 if you provide mapDispatchToProps in the 2nd paramter, Therefore, instead of calling props.dispatch(() => increment()), you may call props.increment() directly. 
+
+
+# object spread operator
+
+https://redux.js.org/recipes/using-object-spread-operator
+
+
+# redux-thunk
+
+“Thunk” middleware lets you write action creators as “thunks”, that is, functions returning functions. 
+This inverts the control: you will get dispatch as an argument, so you can write an action creator that dispatches many times.
+It is a 1middleware that looks at every action that passes through the system, and if it’s a function, it calls that function. That’s all it does.
+https://daveceddia.com/what-is-a-thunk/
+https://daveceddia.com/where-fetch-data-redux/
+
+```js
+function createThunkMiddleware(extraArgument) {
+  return ({ dispatch, getState }) => next => action => {
+		// This gets called for every action you dispatch.
+		// If it's a function, call it.
+    if (typeof action === 'function') {
+      return action(dispatch, getState, extraArgument);
+    }
+
+		// Otherwise, just continue processing this action as usual
+    return next(action);
+  };
+}
+
+const thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+export default thunk;
+```
+The word "thunk" is a programming term that means "a piece of code that does some delayed work". For more details, see these posts:
+
+
+# fetch async await
+https://dmitripavlutin.com/javascript-fetch-async-await/
+https://javascript.plainenglish.io/how-to-make-your-js-fetch-not-look-so-ugly-f45c89f8bc3a

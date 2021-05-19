@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 //import { addNote } from '../redux/actions/actions'
-import { addNote } from '../redux/features/notes/notesSlice'
+import { addNote } from '../../redux/features/notes/notesSlice'
 import { nanoid } from 'nanoid'
 
 const AddNote = () => {

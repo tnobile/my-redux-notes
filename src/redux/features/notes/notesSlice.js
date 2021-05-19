@@ -1,5 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 const uuidv4 = require("uuid/v4")
+
+export async function fetchNotes(dispatch, getState) {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => response.json())
+        .then(json => {
+            console.log("p", json)
+            dispatch(loadNotes(json.slice(0, 5)));
+        });
+}
+
 const notesSlice = createSlice({
     // A name, used in action types
     name: "notes",

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 //import { updateNote } from '../redux/actions/actions';
-import { updateNote } from '../redux/features/notes/notesSlice';
+import { updateNote } from '../../redux/features/notes/notesSlice';
 
 const EditNote = ({ note }) => {
     const [title, setTitle] = useState(note.title);
