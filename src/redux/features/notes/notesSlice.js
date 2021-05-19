@@ -1,13 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 const uuidv4 = require("uuid/v4")
 
-export async function fetchNotes(dispatch, getState) {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json())
-        .then(json => {
-            console.log("p", json)
-            dispatch(loadNotes(json.slice(0, 5)));
-        });
+export function fetchNotes(num = 9) {
+    return async function fetchNotesThunk(dispatch, getState) {
+        // fetch('https://jsonplaceholder.typicode.com/posts')
+        //     .then(response => response.json())
+        //     .then(json => {
+        //         //console.log("p", json)
+        //         dispatch(loadNotes(json.slice(0, 11)));
+        //     });
+
+        // sleep
+        await new Promise(r => setTimeout(r, 5000 * Math.random()));
+
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const notes = await response.json();
+        dispatch(loadNotes(notes.slice(0, num)));
+    }
 }
 
 const notesSlice = createSlice({
@@ -28,10 +37,11 @@ const notesSlice = createSlice({
         deleteNote: (state, action) => { state.notes = [...state.notes.filter(p => p.id !== action.payload)] },
         editNote: (state, action) => { state.notes = state.notes.map(note => note.id === action.payload ? { ...note, editing: true } : note) },
         updateNote: (state, action) => { state.notes = [{ ...action.payload, editing: false }, ...state.notes.filter(note => note.id !== action.payload.id),] },
+        clearNotes: (state, action) => {state.notes=[]},
     }
 });
 
 // Will handle the action type `'notes/add'`, etc.
-export const { addNote, loadNotes, deleteNote, editNote, updateNote } = notesSlice.actions;
+export const { addNote, loadNotes, deleteNote, editNote, updateNote, clearNotes } = notesSlice.actions;
 
 export default notesSlice.reducer;
