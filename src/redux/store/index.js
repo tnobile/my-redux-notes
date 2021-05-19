@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 import notesSlice from "../features/notes/notesSlice"
 import todosSlice from "../features/todos/todosSlice"
 import loggerMiddleware from '../middleware/logger'
-import { composeWithDevTools } from 'redux-devtools-extension'
+//import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
@@ -11,7 +11,7 @@ const reducer = combineReducers({
     todos: todosSlice,
 })
 
-const composedEnhancer = composeWithDevTools(applyMiddleware(thunk))
+//const composedEnhancer = composeWithDevTools(applyMiddleware(thunk))
 
 const store = configureStore({
     reducer,
