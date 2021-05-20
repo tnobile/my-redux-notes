@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const SettingsPane = ({ handleClick, handleClear, handleFetchError }) => {
+const SettingsPane = ({ handleClick, handleClear, handleFetchError, handleSearch }) => {
     const [value, setValue] = useState(10);
 
     return (
@@ -11,6 +11,9 @@ const SettingsPane = ({ handleClick, handleClear, handleFetchError }) => {
             </div>
             <button className="btn btn-secondary btn-lg m-1" onClick={handleClear}>clear all </button>
             <button className="btn btn-danger btn-lg m-1" onClick={handleFetchError}>fetch with error </button>
+            <div className='m-1'>
+                <input className="form-control" placeholder='search...' type='text' onChange={e => handleSearch(e.target.value)}></input>
+            </div>
         </div>
     )
 }

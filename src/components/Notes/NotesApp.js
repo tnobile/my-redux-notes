@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import NoteList from './NoteList';
 import NewNote from './AddNote';
 import { useDispatch } from 'react-redux'
@@ -6,6 +6,7 @@ import { fetchNotes, clearNotes } from '../../redux/features/notes/notesSlice'
 import SettingsPane from './SettingsPane';
 
 const NotesApp = () => {
+    const [term, setTerm] = useState();
     const dispatch = useDispatch();
     useEffect(() => {
         // thunk (middleware captures it)
@@ -17,13 +18,14 @@ const NotesApp = () => {
             <div className="row">
                 <div className="col">
                     <NewNote dispatch={dispatch} />
-                    <SettingsPane 
-                        handleClear={()=>dispatch(clearNotes())} 
-                        handleClick={v => dispatch(fetchNotes(v < 10 ? v : 9))} 
+                    <SettingsPane
+                        handleSearch={v => setTerm(v)}
+                        handleClear={() => dispatch(clearNotes())}
+                        handleClick={v => dispatch(fetchNotes(v < 10 ? v : 9))}
                         handleFetchError={v => dispatch(fetchNotes(-1))} />
                 </div>
                 <div className="col">
-                    <NoteList />
+                    <NoteList term={term} />
                 </div>
             </div>
         </div>

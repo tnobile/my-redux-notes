@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useSelector, shallowEqual } from "react-redux";
 import Note from "./Note";
 import NoteCounter from './NoteCounter'
@@ -12,9 +12,10 @@ import EditNote from './EditNote'
  * building a new object from multiple values of the store), then you should make use of the Redux’s shallowEqual function. If that’s not sufficient, 
  * give Reselect a try or try wrapping your component in useMemo instead.
  */
-const NoteList = () => {
+const NoteList = ({ term }) => {
     const { notes, error, loading } = useSelector(store => store.notes, shallowEqual);
-    const notesItems = notes.map((note) => (
+
+    const notesItems = notes.filter(n => term ? n.content.includes(term) : true).map((note) => (
         <div key={note.id}>
             {note.editing ?
                 <EditNote note={note} /> : <Note note={note} />}
@@ -22,7 +23,6 @@ const NoteList = () => {
     ));
 
     return (
-
         <div>
             {error && <div className="text-danger display-6 mt-5">Error! {error}</div>}
             {loading && <div className="text-center display-3 mt-5">Loading...</div>}
