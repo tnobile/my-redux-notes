@@ -13,7 +13,7 @@ import EditNote from './EditNote'
  * give Reselect a try or try wrapping your component in useMemo instead.
  */
 const NoteList = () => {
-    const { notes } = useSelector(store => store.notes, shallowEqual);
+    const { notes, error, loading } = useSelector(store => store.notes, shallowEqual);
     const notesItems = notes.map((note) => (
         <div key={note.id}>
             {note.editing ?
@@ -22,12 +22,20 @@ const NoteList = () => {
     ));
 
     return (
-        <div className="note-container">
-            <h3 className="text-center">All Notes</h3>
-            { notes && notes.length > 0 && <NoteCounter />}
-            <div className="note-container">
-                {notes && notesItems}
-            </div>
+
+        <div>
+            {error && <div className="text-danger display-6 mt-5">Error! {error}</div>}
+            {loading && <div className="text-center display-3 mt-5">Loading...</div>}
+            {!error && !loading &&
+                <div className="note-container">
+                    <h3 className="text-center">All Notes</h3>
+                    {notes && notes.length > 0 && <NoteCounter />}
+                    {notes && notes.length === 0 && <div>Please fetch...</div>}
+                    <div className="note-container">
+                        {notes && notesItems}
+                    </div>
+                </div>
+            }
         </div>)
 }
 

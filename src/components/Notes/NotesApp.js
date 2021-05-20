@@ -19,7 +19,8 @@ const NotesApp = () => {
                     <NewNote dispatch={dispatch} />
                     <SettingsPane 
                         handleClear={()=>dispatch(clearNotes())} 
-                        handleClick={v => dispatch(fetchNotes(v < 10 ? v : 9))} />
+                        handleClick={v => dispatch(fetchNotes(v < 10 ? v : 9))} 
+                        handleFetchError={v => dispatch(fetchNotes(-1))} />
                 </div>
                 <div className="col">
                     <NoteList />
