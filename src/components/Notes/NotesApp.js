@@ -21,7 +21,7 @@ const NotesApp = () => {
                     <SettingsPane
                         handleSearch={v => setTerm(v)}
                         handleClear={() => dispatch(clearNotes())}
-                        handleClick={v => dispatch(fetchNotes(v < 10 ? v : 9))}
+                        handleClick={v => dispatch(fetchNotes(v < 50 ? v : 9))}
                         handleFetchError={v => dispatch(fetchNotes(-1))} />
                 </div>
                 <div className="col">
