@@ -1,5 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 const uuidv4 = require("uuid/v4")
+
+export const selectNotes = (state) => state.notes.notes;
+
+export const selectNotesIds = createSelector(
+    selectNotes,
+    notes => notes
+)
 
 export function fetchNotes(num = 9) {
     return async function fetchNotesThunk(dispatch, getState) {

@@ -1,9 +1,12 @@
-import { useSelector, shallowEqual } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectNotesIds } from '../../redux/features/notes/notesSlice'
 
 const NoteCounter = () => {
-    const { notes } = useSelector(store => store.notes, shallowEqual);
+    //const { notes } = useSelector(store => store.notes, shallowEqual);
+    const notes = useSelector(selectNotesIds);
     return (
-        <div>{console.log('notes in counter', notes)}
+        <div>
+            {console.log('notes in counter', notes)}
             <p className="text-center">Number of Notes: {notes.length}</p>
         </div>
     );
