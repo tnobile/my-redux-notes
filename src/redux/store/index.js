@@ -2,6 +2,7 @@ import { configureStore, getDefaultMiddleware}  from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
 import notesSlice from "../features/notes/notesSlice"
 import todosSlice from "../features/todos/todosSlice"
+import searchSlice from "../features/search/searchSlice"
 import loggerMiddleware from '../middleware/logger'
 //import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
@@ -9,6 +10,7 @@ import thunk from 'redux-thunk'
 const reducer = combineReducers({
     notes: notesSlice,
     todos: todosSlice,
+    search: searchSlice,
 })
 
 //const composedEnhancer = composeWithDevTools(applyMiddleware(thunk))

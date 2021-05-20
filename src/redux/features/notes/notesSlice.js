@@ -13,11 +13,11 @@ export function fetchNotes(num = 9) {
         dispatch(fetchNotesBegin());
 
         // sleep
-        await new Promise(r => setTimeout(r, 5000 * Math.random()));
+        await new Promise(r => setTimeout(r, 2000 * Math.random()));
 
         try {
             if (num < 0) {
-                dispatch(fetchNotesError("oops!  me lo has dicho..."));
+                dispatch(fetchNotesError("oops!  ya me lo has dicho..."));
                 return
             }
 
