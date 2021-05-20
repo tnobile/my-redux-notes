@@ -11,6 +11,7 @@ const SettingsPane = ({ handleClick, handleClear, handleFetchError, handleSearch
     const handleClearHere=() =>{
         setTerm("");
         handleClear();
+        handleSearch("");
     }
     return (
         <div className="note-container">
