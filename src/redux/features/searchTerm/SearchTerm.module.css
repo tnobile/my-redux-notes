@@ -21,8 +21,8 @@
 .search-icon {
     opacity: 0.5;
     position: absolute;
-    top: 42px;
-    left: 53px;
+    top: 12px;
+    left: 13px;
 }
 
 .search::placeholder {
@@ -33,9 +33,9 @@
 
 .search-clear-button {
     position: absolute;
-    right: 42px;
-    top: 36px;
-    bottom: 3px;
+    right: 2px;
+    top: 18px;
+    bottom: 1px;
     border: 0;
     background: none;
     color: #141c3a;

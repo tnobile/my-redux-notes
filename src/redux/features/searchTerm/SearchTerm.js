@@ -24,7 +24,7 @@ const SearchTerm = () => {
     return (
         <div className={styles["searchTerm"]}>
             <div className={styles["search-container"]}>
-                <img className={styles["search-icon]"]} alt="" src={searchIconUrl} />
+                <img className={styles["search-icon"]} alt="s" src={searchIconUrl} />
                 <input
                     className={styles["search"]}
                     type="text"
@@ -37,7 +37,7 @@ const SearchTerm = () => {
                         onClick={onClearSearchTermHandler}
                         type="button"
                         className={styles["search-clear-button"]} >
-                        <img src={clearIconUrl} alt="" />
+                        <img src={clearIconUrl} alt="x" />
                     </button>
                 )}
             </div>

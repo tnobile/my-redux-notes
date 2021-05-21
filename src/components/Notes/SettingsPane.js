@@ -1,20 +1,18 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setSearchTerm } from '../../redux/features/searchTerm/searchTermSlice'
 import { clearNotes, fetchNotes } from '../../redux/features/notes/notesSlice'
 import SearchTerm from '../../redux/features/searchTerm/SearchTerm'
 
 const SettingsPane = () => {
     const dispatch = useDispatch();
+    const term = useSelector(store=>store.searchTerm);
     const [value, setValue] = useState(10);
-    const [term, setTerm] = useState("");;
 
     const handleTermChange = evt => {
-        setTerm(evt.target.value);
         dispatch(setSearchTerm(evt.target.value));
     }
     const handleClearHere = () => {
-        setTerm("");
         dispatch(clearNotes());
         dispatch(setSearchTerm(""));
     }
