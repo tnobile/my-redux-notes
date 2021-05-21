@@ -28,14 +28,18 @@ export function fetchNotes(num = 9) {
                 return
             }
 
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+            let url = 'https://jsonplaceholder.typicode.com/posts';
+            //url = 'https://zenquotes.io/api/quotes'
+
+            const response = await fetch(url)
             if (!response.ok) {
                 //throw Error(response.statusText);
                 const message = `An error has occured: ${response.status}`;
                 throw new Error(message);
             }
-            const notes = await response.json();
-            dispatch(loadNotes(notes.slice(0, num)));
+            const quotes = await response.json();
+            //const notes = quotes.map(q => { return { title: q.q, content:q.a } });
+            dispatch(loadNotes(quotes.slice(0, num)));
         } catch (error) {
             console.log('fetch error: ', error);
             dispatch(fetchNotesError(error.message));

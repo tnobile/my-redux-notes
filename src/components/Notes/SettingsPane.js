@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SearchTerm from '../../redux/features/searchTerm/SearchTerm'
 
 const SettingsPane = ({ handleClick, handleClear, handleFetchError, handleSearch }) => {
     const [value, setValue] = useState(10);
@@ -8,7 +9,7 @@ const SettingsPane = ({ handleClick, handleClear, handleFetchError, handleSearch
         setTerm(evt.target.value);
         handleSearch(evt.target.value);
     }
-    const handleClearHere=() =>{
+    const handleClearHere = () => {
         setTerm("");
         handleClear();
         handleSearch("");
@@ -23,7 +24,10 @@ const SettingsPane = ({ handleClick, handleClear, handleFetchError, handleSearch
             <button className="btn btn-danger btn-lg m-1" onClick={handleFetchError}>fetch with error </button>
             <div className='m-1'>
                 <input className="form-control" placeholder='search...' type='text' value={term} onChange={handleTermChange}></input>
-        </div>
+            </div>
+            <div>
+                <SearchTerm />
+            </div>
         </div >
     )
 }

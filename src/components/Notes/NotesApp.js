@@ -3,7 +3,7 @@ import NoteList from './NoteList';
 import NewNote from './AddNote';
 import { useDispatch } from 'react-redux'
 import { fetchNotes, clearNotes } from '../../redux/features/notes/notesSlice'
-import { searchNotes } from '../../redux/features/search/searchSlice'
+import { setSearchTerm} from '../../redux/features/searchTerm/searchTermSlice'
 import SettingsPane from './SettingsPane';
 
 const NotesApp = () => {
@@ -15,7 +15,7 @@ const NotesApp = () => {
 
 
     const handleSearch = term => {
-        dispatch(searchNotes(term));
+        dispatch(setSearchTerm(term));
     }
 
     return (

@@ -1,5 +1,6 @@
-import React  from "react"
+import React from "react"
 import { useSelector, shallowEqual } from "react-redux";
+import { selectFilteredAllNotes } from '../../redux/features/searchTerm/searchTermSlice'
 import Note from "./Note";
 import NoteCounter from './NoteCounter'
 import EditNote from './EditNote'
@@ -13,11 +14,13 @@ import EditNote from './EditNote'
  * give Reselect a try or try wrapping your component in useMemo instead.
  */
 const NoteList = () => {
-    const { notes, error, loading } = useSelector(store => store.notes, shallowEqual);
-    const { search } = useSelector(store => store, shallowEqual);
-    const term = search;
+    const { error, loading } = useSelector(store => store.notes, shallowEqual);
+    //const { searchTerm } = useSelector(store => store, shallowEqual);
+    //const term = searchTerm;
+    const notes = useSelector(selectFilteredAllNotes);
+    //const notesItems = notes.filter(n => term && term!=='' ? n.content.includes(term) : true).map((note) => (
 
-    const notesItems = notes.filter(n => term && term!=='' ? n.content.includes(term) : true).map((note) => (
+    const notesItems = notes.map((note) => (
         <div key={note.id}>
             {note.editing ?
                 <EditNote note={note} /> : <Note note={note} />}
