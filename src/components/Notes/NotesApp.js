@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import NoteList from './NoteList';
 import NewNote from './AddNote';
 import { useDispatch } from 'react-redux'
-import { fetchNotes, clearNotes } from '../../redux/features/notes/notesSlice'
+import { fetchNotes } from '../../redux/features/notes/notesSlice'
 import SettingsPane from './SettingsPane';
 
 const NotesApp = () => {
@@ -18,7 +18,7 @@ const NotesApp = () => {
             <div className="row">
                 <div className="col">
                     <NewNote />
-                    <SettingsPane/>
+                    <SettingsPane />
                 </div>
                 <div className="col">
                     <NoteList />
