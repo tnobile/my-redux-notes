@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './SearchTerm.module.css'
 
 import { setSearchTerm, clearSearchTerm, selectSearchTerm } from './searchTermSlice.js';
 
@@ -21,23 +22,25 @@ const SearchTerm = () => {
     };
 
     return (
-        <div id="search-container">
-            <img id="search-icon" alt="" src={searchIconUrl} />
-            <input
-                id="search"
-                type="text"
-                value={searchTerm}
-                onChange={onSearchTermChangeHandler}
-                placeholder="Search!"
-            />
-            {searchTerm.length > 0 && (
-                <button
-                    onClick={onClearSearchTermHandler}
-                    type="button"
-                    id="search-clear-button" >
-                    <img src={clearIconUrl} alt="" />
-                </button>
-            )}
+        <div className={styles["searchTerm"]}>
+            <div className={styles["search-container"]}>
+                <img className={styles["search-icon]"]} alt="" src={searchIconUrl} />
+                <input
+                    className={styles["search"]}
+                    type="text"
+                    value={searchTerm}
+                    onChange={onSearchTermChangeHandler}
+                    placeholder="Search!"
+                />
+                {searchTerm.length > 0 && (
+                    <button
+                        onClick={onClearSearchTermHandler}
+                        type="button"
+                        className={styles["search-clear-button"]} >
+                        <img src={clearIconUrl} alt="" />
+                    </button>
+                )}
+            </div>
         </div>
     );
 };
